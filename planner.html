@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BusWatch — aplikasi perencanaan perjalanan, pemantauan bus, dan prediksi waktu kedatangan angkutan umum.">
+<title>BusWatch — Perencana Perjalanan</title><link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="planner">
+<div class="app">
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" style="text-decoration:none;color:inherit"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="4" y="3" width="16" height="15" rx="3"></rect><path d="M7 7h10M7 11h3m4 0h3M7 15h10M7 18l-2 3m12-3 2 3"></path></svg></div><div><div class="brand-name">BusWatch</div><div class="brand-caption">SMART PUBLIC TRANSPORT</div></div></a>
+      <div><div class="nav-label">MENU UTAMA</div><nav aria-label="Navigasi utama" class="nav"><a class="nav-btn" href="index.html" ><span class="ico">▦</span>Ringkasan</a>
+<a class="nav-btn active" href="planner.html" aria-current="page"><span class="ico">⌕</span>Rencanakan perjalanan</a>
+<a class="nav-btn" href="tracking.html" ><span class="ico">⌖</span>Live tracking<span class="nav-badge">LIVE</span></a>
+<a class="nav-btn" href="stops.html" ><span class="ico">▣</span>Halte & koridor</a>
+<a class="nav-btn" href="notifications.html" ><span class="ico">♧</span>Notifikasi<span class="nav-badge">3</span></a></nav></div>
+      <div><div class="nav-label">PENGELOLAAN</div><nav class="nav"><a class="nav-btn" href="operator.html" ><span class="ico">▤</span>Dashboard operator</a></nav></div>
+      <div class="side-spacer"></div>
+      <div class="service-card"><h4>Semua sistem beroperasi</h4><p>Data lokasi bus demo diperbarui secara berkala untuk simulasi dashboard.</p><div class="online"><span class="dot"></span>Sistem online</div></div>
+      <div class="profile"><div class="avatar">BW</div><div><div class="profile-name">Pengguna BusWatch</div><div class="profile-role">Akun demo · Penumpang</div></div></div>
+    </aside>
+<main>
+<header class="topbar"><div style="display:flex;gap:10px;align-items:flex-start"><button aria-label="Buka menu" class="icon-btn mobile-menu" id="mobileMenu">☰</button><div><div class="crumb">BusWatch / <span id="crumbCurrent">Perencana Perjalanan</span></div><h1 class="page-title">Rencanakan perjalanan</h1><div class="page-subtitle">Cari halte, koridor, dan rute yang paling sesuai.</div></div></div><div class="top-actions"><span class="date-pill" id="currentDate">Memuat tanggal…</span><button aria-label="Buka notifikasi" class="icon-btn" id="topNotify">♧<span class="badge-dot"></span></button><div class="avatar">BW</div></div></header>
+<section class="view active" id="view-planner">
+<div class="grid page-grid"><div class="card section-card"><h3>Rencanakan perjalanan</h3><p class="lead">Masukkan lokasi asal dan tujuan. BusWatch akan mencari halte, koridor, dan pilihan rute yang sesuai.</p><form id="fullPlanner"><div class="field-row"><div><label class="form-label" for="origin2">Lokasi asal</label><input class="field" id="origin2" list="places2" required="" value="Poltrada Bali"/></div><div><label class="form-label" for="destination2">Lokasi tujuan</label><input class="field" id="destination2" list="destinations2" required="" value="Terminal Ubung"/></div></div><datalist id="places2"><option>Poltrada Bali</option><option>Halte A</option><option>Halte B</option><option>Terminal Ubung</option><option>Lapangan Puputan</option></datalist><datalist id="destinations2"><option>Terminal Ubung</option><option>Sanur</option><option>Nusa Dua</option><option>Lapangan Puputan</option><option>Poltrada Bali</option></datalist><div style="margin-top:18px"><div class="form-label">Prioritas perjalanan</div><div class="tabs" id="priorityTabs"><button class="tab active" data-priority="fast" type="button">⚡ Tercepat</button><button class="tab" data-priority="walk" type="button">🚶 Minim jalan</button><button class="tab" data-priority="transit" type="button">↔ Minim transit</button><button class="tab" data-priority="cheap" type="button">Rp Termurah</button></div></div><button class="primary-btn" type="submit">Cari perjalanan</button></form><div class="divider"></div><div id="plannerResults"><div class="section-eyebrow">Hasil rekomendasi</div><div class="stop-card"><div class="stop-marker">★</div><div class="stop-info"><strong>Rute tercepat · Koridor 1 langsung</strong><small>Jalan kaki 450 m · Bus 21 menit · Tanpa transit</small><small id="plannerRouteDesc">Halte A → Terminal Ubung</small></div><div style="text-align:right"><div class="eta">32 mnt</div><div class="eta-label">total</div></div></div><div class="stop-card"><div class="stop-marker" style="background:#eaf3ff;color:#1778f8">⇄</div><div class="stop-info"><strong>Alternatif · Koridor 3 + Koridor 1</strong><small>Jalan kaki 8 menit · Transit 1 kali</small><small>Waktu perjalanan lebih panjang</small></div><div style="text-align:right"><div style="font-size:14px;font-weight:800">38 mnt</div><div class="eta-label">total</div></div></div></div></div>
+<div class="card section-card"><h3>Halte di sekitar lokasi</h3><p class="lead">Contoh daftar halte yang ditemukan di sekitar titik asal. Jarak dan waktu bersifat simulasi.</p><div class="stop-card"><div class="stop-marker">🚏</div><div class="stop-info"><strong>Halte A</strong><small>350 m · 5 menit berjalan kaki</small><small>Koridor 1 dan 2</small></div><span class="status green">Direkomendasikan</span></div><div class="stop-card"><div class="stop-marker" style="background:#eaf3ff;color:#1778f8">🚏</div><div class="stop-info"><strong>Halte B</strong><small>600 m · 7 menit berjalan kaki</small><small>Koridor 1, 3, dan 4</small></div><button class="map-filter choose-stop" data-stop="Halte B">Pilih</button></div><div class="stop-card"><div class="stop-marker" style="background:#f2ebff;color:#8050cf">🚏</div><div class="stop-info"><strong>Halte C</strong><small>900 m · 12 menit berjalan kaki</small><small>Koridor 3 dan 5</small></div><button class="map-filter choose-stop" data-stop="Halte C">Pilih</button></div><div class="divider"></div><div class="section-eyebrow">Tips perjalanan</div><p class="lead" style="margin-top:8px">ETA merupakan perkiraan dan dapat berubah mengikuti posisi GPS, kemacetan, dan waktu berhenti kendaraan. Datanglah ke halte sedikit lebih awal.</p></div></div>
+</section>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
