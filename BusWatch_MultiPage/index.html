@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description"
+            content="BusWatch — aplikasi perencanaan perjalanan, pemantauan bus, dan prediksi waktu kedatangan angkutan umum.">
+      <title>BusWatch — Ringkasan</title>
+      <link rel="stylesheet" href="styles.css">
+      <!-- Leaflet OpenStreetMap untuk Peta Live & Navigasi Rute GPS -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+</head>
+
+<body data-page="dashboard">
+      <div class="app">
+            <aside class="sidebar" id="sidebar">
+                  <a class="brand" href="index.html" style="text-decoration:none;color:inherit">
+                        <div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <rect x="4" y="3" width="16" height="15" rx="3"></rect>
+                                    <path d="M7 7h10M7 11h3m4 0h3M7 15h10M7 18l-2 3m12-3 2 3"></path>
+                              </svg></div>
+                        <div>
+                              <div class="brand-name">BusWatch</div>
+                              <div class="brand-caption">SMART PUBLIC TRANSPORT</div>
+                        </div>
+                  </a>
+                  <div>
+                        <div class="nav-label">MENU UTAMA</div>
+                        <nav aria-label="Navigasi utama" class="nav"><a class="nav-btn active" href="index.html"
+                                    aria-current="page"><span class="ico">▦</span>Ringkasan</a>
+                              <a class="nav-btn" href="planner.html"><span class="ico">⌕</span>Rencanakan perjalanan</a>
+                              <a class="nav-btn" href="tracking.html"><span class="ico">⌖</span>Live tracking<span
+                                          class="nav-badge">LIVE</span></a>
+                              <a class="nav-btn" href="stops.html"><span class="ico">▣</span>Halte & koridor</a>
+                              <a class="nav-btn" href="notifications.html"><span class="ico">♧</span>Notifikasi<span
+                                          class="nav-badge">3</span></a>
+                        </nav>
+                  </div>
+                  <div>
+                        <div class="nav-label">PENGELOLAAN</div>
+                        <nav class="nav"><a class="nav-btn" href="operator.html"><span class="ico">▤</span>Dashboard
+                                    operator</a></nav>
+                  </div>
+                  <div class="side-spacer"></div>
+                  <div class="service-card">
+                        <h4>Semua sistem beroperasi</h4>
+                        <p>Data lokasi bus demo diperbarui secara berkala untuk simulasi dashboard.</p>
+                        <div class="online"><span class="dot"></span>Sistem online</div>
+                  </div>
+                  <div class="profile">
+                        <div class="avatar">BW</div>
+                        <div>
+                              <div class="profile-name">Pengguna BusWatch</div>
+                              <div class="profile-role">Akun demo · Penumpang</div>
+                        </div>
+                  </div>
+            </aside>
+            <main>
+                  <header class="topbar">
+                        <div style="display:flex;gap:10px;align-items:flex-start"><button aria-label="Buka menu"
+                                    class="icon-btn mobile-menu" id="mobileMenu">☰</button>
+                              <div>
+                                    <div class="crumb">BusWatch / <span id="crumbCurrent">Ringkasan</span></div>
+                                    <h1 class="page-title">Selamat datang di BusWatch 👋</h1>
+                                    <div class="page-subtitle">Rencanakan perjalanan dan pantau bus dalam satu tempat.
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="top-actions"><span class="date-pill" id="currentDate">Memuat tanggal…</span><button
+                                    aria-label="Buka notifikasi" class="icon-btn" id="topNotify">♧<span
+                                          class="badge-dot"></span></button>
+                              <div class="avatar">BW</div>
+                        </div>
+                  </header>
+                  <section class="view active" id="view-dashboard">
+                        <div class="grid kpis">
+                              <div class="card kpi">
+                                    <div class="kpi-top"><span class="kpi-label">Bus aktif</span><span
+                                                class="kpi-icon bg-blue">🚌</span></div>
+                                    <div class="kpi-value">24</div>
+                                    <div class="kpi-foot"><span class="positive">↑ 3 bus</span> dibanding pagi ini</div>
+                              </div>
+                              <div class="card kpi">
+                                    <div class="kpi-top"><span class="kpi-label">Ketepatan waktu</span><span
+                                                class="kpi-icon bg-green">◷</span></div>
+                                    <div class="kpi-value">92%</div>
+                                    <div class="kpi-foot"><span class="positive">+4,2%</span> dari periode sebelumnya
+                                    </div>
+                              </div>
+                              <div class="card kpi">
+                                    <div class="kpi-top"><span class="kpi-label">Rata-rata waktu tunggu</span><span
+                                                class="kpi-icon bg-orange">⌛</span></div>
+                                    <div class="kpi-value">6,4 <span style="font-size:13px">mnt</span></div>
+                                    <div class="kpi-foot">Berdasarkan simulasi perjalanan hari ini</div>
+                              </div>
+                              <div class="card kpi">
+                                    <div class="kpi-top"><span class="kpi-label">Koridor beroperasi</span><span
+                                                class="kpi-icon bg-purple">⇄</span></div>
+                                    <div class="kpi-value">5</div>
+                                    <div class="kpi-foot">12 halte dalam cakupan demo</div>
+                              </div>
+                        </div>
+                        <div class="grid dashboard-grid">
+                              <div class="card">
+                                    <div class="card-head">
+                                          <div>
+                                                <div class="card-title" style="display:flex;align-items:center;gap:8px">
+                                                      <span>Peta Armada & Rute Google Maps</span><span
+                                                            class="live-tag"><span class="dot"></span>LIVE GPS</span>
+                                                </div>
+                                                <div class="card-sub">Peta jalan Google Maps (Roadmap) menampilkan
+                                                      posisi GPS aktual, armada bus bergerak, dan rute navigasi</div>
+                                          </div>
+                                          <div class="map-head-actions">
+                                                <button type="button" class="map-action-pill" id="btnMapRecenter"
+                                                      title="Pusatkan peta ke lokasi aktual saya (GPS)"><span>📍</span>
+                                                      Lokasi Saya</button>
+                                                <button type="button" class="map-action-pill" id="btnMapFitRoute"
+                                                      title="Pusatkan tampilan rute perjalanan aktif"><span>🛣</span>
+                                                      Rute Anda</button>
+                                                <select aria-label="Pilih jenis peta" class="map-filter"
+                                                      id="mapTypeFilter" title="Ganti gaya peta">
+                                                      <option value="google">🗺 Google Maps</option>
+                                                      <option value="terrain">⛰ Google Medan</option>
+                                                      <option value="osm">🌐 OpenStreetMap</option>
+                                                </select>
+                                                <select aria-label="Filter koridor" class="map-filter"
+                                                      id="mapRouteFilter">
+                                                      <option value="all">Semua koridor</option>
+                                                      <option value="k1">Koridor 1</option>
+                                                      <option value="k3">Koridor 3</option>
+                                                      <option value="k5">Koridor 5</option>
+                                                </select>
+                                          </div>
+                                    </div>
+                                    <div class="map-wrap">
+                                          <div class="map" id="mainMap"></div>
+                                          <!-- Panduan Rute Mengambang -->
+                                          <div class="map-route-overlay" id="mapRouteOverlay" style="display:none">
+                                                <div class="mro-head">
+                                                      <div class="mro-title">
+                                                            <span>🛣 Rute Yang Harus Digunakan</span>
+                                                            <span class="status green" id="mroTimeBadge"
+                                                                  style="padding:2px 7px;font-size:9px">32 mnt</span>
+                                                      </div>
+                                                      <button type="button" class="mro-close" id="btnCloseMro"
+                                                            title="Tutup panduan">✕</button>
+                                                </div>
+                                                <div class="mro-steps" id="mroStepsContent">
+                                                      <!-- Step navigasi dinamis -->
+                                                </div>
+                                          </div>
+                                          <div class="map-key">
+                                                <span class="key-item"><span class="user-key"></span>Lokasi Aktual Anda
+                                                      (GPS)</span>
+                                                <span class="key-item"><span class="route-key"></span>Rute Yang Harus
+                                                      Digunakan</span>
+                                                <span class="key-item"><span class="walk-key"></span>Jalan Kaki</span>
+                                                <span class="key-item"><span class="pin-key"></span>Halte Bus</span>
+                                                <span class="key-item">🚌 Bus Bergerak (Live Telemetri)</span>
+                                                <span class="key-item"><span class="line-key"></span>Koridor 1</span>
+                                                <span class="key-item"><span class="line-key teal"></span>Koridor
+                                                      3</span>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="right-stack">
+                                    <div class="card journey-card">
+                                          <div class="section-eyebrow">Rencana perjalanan</div>
+                                          <div class="journey-heading">Mau pergi ke mana?</div>
+
+                                          <div class="gps-quick-bar" aria-label="Pintasan lokasi GPS">
+                                                <span class="gps-quick-label">⚡ GPS Cepat:</span>
+                                                <button type="button" class="gps-chip" id="quickGpsOrigin"
+                                                      title="Gunakan titik lokasi sekarang sebagai lokasi asal"><span>📍</span>
+                                                      Asal = Titik Saya</button>
+                                                <button type="button" class="gps-chip" id="quickGpsDest"
+                                                      title="Gunakan titik lokasi sekarang sebagai lokasi tujuan"><span>🎯</span>
+                                                      Tujuan = Titik Saya</button>
+                                          </div>
+
+                                          <form id="quickPlanner">
+                                                <div class="form-group">
+                                                      <div class="field-header">
+                                                            <label class="form-label" for="origin">Lokasi asal</label>
+                                                            <button type="button" class="btn-gps-pill" id="btnGpsOrigin"
+                                                                  title="Gunakan lokasi titik sekarang via GPS"><svg
+                                                                        class="gps-icon" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2.3">
+                                                                        <circle cx="12" cy="12" r="3.5"></circle>
+                                                                        <path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path>
+                                                                  </svg><span class="btn-gps-text">Gunakan
+                                                                        GPS</span></button>
+                                                      </div>
+                                                      <div class="input-gps-wrap">
+                                                            <input class="field" id="origin"
+                                                                  required="" value=""
+                                                                  placeholder="Ketik alamat asal Anda di Google Maps..."
+                                                                  autocomplete="off" />
+                                                            <button type="button" class="field-gps-btn"
+                                                                  id="btnGpsOriginIcon"
+                                                                  title="Gunakan titik lokasi sekarang (GPS)"
+                                                                  aria-label="Gunakan GPS untuk lokasi asal"><svg
+                                                                        viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2.3">
+                                                                        <circle cx="12" cy="12" r="3.5"></circle>
+                                                                        <path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path>
+                                                                  </svg></button>
+                                                            <div class="autocomplete-dropdown" id="originSuggestions" style="display:none"></div>
+                                                      </div>
+                                                      <div class="gps-status-badge" id="originGpsBadge"
+                                                            style="display:none"></div>
+                                                </div>
+
+                                                <div class="swap-row">
+                                                      <button type="button" class="swap-btn" id="swapLocationsBtn"
+                                                            title="Tukar lokasi asal dan tujuan"
+                                                            aria-label="Tukar lokasi">⇄</button>
+                                                </div>
+
+                                                <div class="form-group">
+                                                      <div class="field-header">
+                                                            <label class="form-label" for="destination">Lokasi
+                                                                  tujuan</label>
+                                                            <button type="button" class="btn-gps-pill"
+                                                                  id="btnGpsDestination"
+                                                                  title="Gunakan lokasi titik sekarang via GPS"><svg
+                                                                        class="gps-icon" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2.3">
+                                                                        <circle cx="12" cy="12" r="3.5"></circle>
+                                                                        <path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path>
+                                                                  </svg><span class="btn-gps-text">Gunakan
+                                                                        GPS</span></button>
+                                                      </div>
+                                                      <div class="input-gps-wrap">
+                                                            <input class="field" id="destination"
+                                                                  required="" value=""
+                                                                  placeholder="Ketik alamat tujuan Anda di Google Maps..."
+                                                                  autocomplete="off" />
+                                                            <button type="button" class="field-gps-btn"
+                                                                  id="btnGpsDestIcon"
+                                                                  title="Gunakan titik lokasi sekarang (GPS)"
+                                                                  aria-label="Gunakan GPS untuk lokasi tujuan"><svg
+                                                                        viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2.3">
+                                                                        <circle cx="12" cy="12" r="3.5"></circle>
+                                                                        <path d="M12 2v3m0 14v3M2 12h3m14 0h3"></path>
+                                                                  </svg></button>
+                                                            <div class="autocomplete-dropdown" id="destSuggestions" style="display:none"></div>
+                                                      </div>
+                                                      <div class="gps-status-badge" id="destGpsBadge"
+                                                            style="display:none"></div>
+                                                </div>
+
+                                                <datalist id="places">
+                                                      <option value="Titik Sekarang (GPS)">Lokasi Saya Saat Ini (GPS)
+                                                      </option>
+                                                      <option>Poltrada Bali</option>
+                                                      <option>Halte A</option>
+                                                      <option>Halte B</option>
+                                                      <option>Terminal Ubung</option>
+                                                      <option>Lapangan Puputan</option>
+                                                </datalist>
+                                                <datalist id="destinations">
+                                                      <option value="Titik Sekarang (GPS)">Lokasi Saya Saat Ini (GPS)
+                                                      </option>
+                                                      <option>Terminal Ubung</option>
+                                                      <option>Sanur</option>
+                                                      <option>Nusa Dua</option>
+                                                      <option>Lapangan Puputan</option>
+                                                      <option>Poltrada Bali</option>
+                                                </datalist>
+                                                <button class="primary-btn" type="submit">⌕ &nbsp; Cari rekomendasi
+                                                      rute</button>
+                                          </form>
+
+                                          <div class="route-suggest" id="quickResult" style="display:none">
+                                                <div class="recommend-label">REKOMENDASI UTAMA</div>
+                                                <div class="route-title"></div>
+                                                <div class="route-meta"></div>
+                                                <div class="metric-row">
+                                                      <div class="mini-metric"><small>Total perjalanan</small><strong
+                                                                  id="quickTotal">-- menit</strong></div>
+                                                      <div class="mini-metric"><small>Bus tiba</small><strong
+                                                                  id="quickArrival">--.--</strong></div>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div class="card">
+                                          <div class="card-head">
+                                                <div>
+                                                      <div class="card-title">Bus yang akan datang</div>
+                                                      <div class="card-sub">Halte A · Koridor 1</div>
+                                                </div><button class="link-btn" data-goto="tracking">Lihat peta
+                                                      →</button>
+                                          </div>
+                                          <div class="bus-list">
+                                                <div class="bus-row">
+                                                      <div class="bus-icon">🚌</div>
+                                                      <div class="bus-main">
+                                                            <div class="bus-name">Bus 01 <span
+                                                                        class="status green">Tepat waktu</span></div>
+                                                            <div class="bus-route">Koridor 1 · Terminal Ubung</div>
+                                                      </div>
+                                                      <div class="bus-arrival">
+                                                            <div class="eta" id="etaBus1">4 mnt</div>
+                                                            <div class="eta-label">perkiraan tiba</div>
+                                                      </div>
+                                                </div>
+                                                <div class="bus-row">
+                                                      <div class="bus-icon" style="background:#e9fbf7;color:#0c9c8d">🚌
+                                                      </div>
+                                                      <div class="bus-main">
+                                                            <div class="bus-name">Bus 07</div>
+                                                            <div class="bus-route">Koridor 1 · Terminal Ubung</div>
+                                                      </div>
+                                                      <div class="bus-arrival">
+                                                            <div class="eta" id="etaBus7">13 mnt</div>
+                                                            <div class="eta-label">perkiraan tiba</div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="grid lower-grid">
+                              <div class="card">
+                                    <div class="card-head">
+                                          <div>
+                                                <div class="card-title">Status armada</div>
+                                                <div class="card-sub">Ringkasan perjalanan bus yang dipantau</div>
+                                          </div><button class="link-btn" data-goto="operator">Dashboard operator
+                                                →</button>
+                                    </div>
+                                    <div class="table-wrap">
+                                          <table>
+                                                <thead>
+                                                      <tr>
+                                                            <th>BUS</th>
+                                                            <th>KORIDOR</th>
+                                                            <th>STATUS</th>
+                                                            <th>KETERISIAN</th>
+                                                            <th>ETA</th>
+                                                      </tr>
+                                                </thead>
+                                                <tbody>
+                                                      <tr>
+                                                            <td class="td-strong">Bus 01</td>
+                                                            <td>Koridor 1</td>
+                                                            <td><span class="status green">Beroperasi</span></td>
+                                                            <td><span class="occupancy"><span
+                                                                              style="width:48%"></span></span>48%</td>
+                                                            <td>4 mnt</td>
+                                                      </tr>
+                                                      <tr>
+                                                            <td class="td-strong">Bus 03</td>
+                                                            <td>Koridor 3</td>
+                                                            <td><span class="status orange">Terlambat</span></td>
+                                                            <td><span class="occupancy"><span
+                                                                              style="width:72%;background:#e99a32"></span></span>72%
+                                                            </td>
+                                                            <td>9 mnt</td>
+                                                      </tr>
+                                                      <tr>
+                                                            <td class="td-strong">Bus 07</td>
+                                                            <td>Koridor 1</td>
+                                                            <td><span class="status green">Beroperasi</span></td>
+                                                            <td><span class="occupancy"><span
+                                                                              style="width:35%"></span></span>35%</td>
+                                                            <td>13 mnt</td>
+                                                      </tr>
+                                                      <tr>
+                                                            <td class="td-strong">Bus 12</td>
+                                                            <td>Koridor 5</td>
+                                                            <td><span class="status red">Gangguan</span></td>
+                                                            <td><span class="occupancy"><span
+                                                                              style="width:0%;background:#e75d67"></span></span>—
+                                                            </td>
+                                                            <td>—</td>
+                                                      </tr>
+                                                </tbody>
+                                          </table>
+                                    </div>
+                              </div>
+                              <div class="card">
+                                    <div class="card-head">
+                                          <div>
+                                                <div class="card-title">Informasi perjalanan</div>
+                                                <div class="card-sub">Pembaruan terbaru dari BusWatch</div>
+                                          </div><button class="link-btn" data-goto="notifications">Semua notifikasi
+                                                →</button>
+                                    </div>
+                                    <div class="notice-list">
+                                          <div class="notice">
+                                                <div class="notice-ico">🚌</div>
+                                                <div style="flex:1">
+                                                      <div class="notice-text">Bus 01 mendekati Halte A</div>
+                                                      <div class="notice-detail">Estimasi kedatangan sekitar 4 menit.
+                                                            Koridor 1 menuju Terminal Ubung.</div>
+                                                </div>
+                                                <div class="notice-time">08.22</div>
+                                          </div>
+                                          <div class="notice">
+                                                <div class="notice-ico" style="background:#fff0ef">⚠️</div>
+                                                <div style="flex:1">
+                                                      <div class="notice-text">Bus 03 mengalami keterlambatan</div>
+                                                      <div class="notice-detail">ETA diperbarui karena perlambatan pada
+                                                            rute.</div>
+                                                </div>
+                                                <div class="notice-time">08.19</div>
+                                          </div>
+                                          <div class="notice">
+                                                <div class="notice-ico" style="background:#e7f7ef">✓</div>
+                                                <div style="flex:1">
+                                                      <div class="notice-text">Koridor 1 beroperasi normal</div>
+                                                      <div class="notice-detail">Tidak ada gangguan layanan yang
+                                                            dilaporkan pada koridor.</div>
+                                                </div>
+                                                <div class="notice-time">08.10</div>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </section>
+            </main>
+      </div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <script src="app.js"></script>
+</body>
+
+</html>

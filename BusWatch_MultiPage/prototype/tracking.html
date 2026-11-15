@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BusWatch — aplikasi perencanaan perjalanan, pemantauan bus, dan prediksi waktu kedatangan angkutan umum.">
+<title>BusWatch — Live Tracking</title><link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="tracking">
+<div class="app">
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" style="text-decoration:none;color:inherit"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="4" y="3" width="16" height="15" rx="3"></rect><path d="M7 7h10M7 11h3m4 0h3M7 15h10M7 18l-2 3m12-3 2 3"></path></svg></div><div><div class="brand-name">BusWatch</div><div class="brand-caption">SMART PUBLIC TRANSPORT</div></div></a>
+      <div><div class="nav-label">MENU UTAMA</div><nav aria-label="Navigasi utama" class="nav"><a class="nav-btn" href="index.html" ><span class="ico">▦</span>Ringkasan</a>
+<a class="nav-btn" href="planner.html" ><span class="ico">⌕</span>Rencanakan perjalanan</a>
+<a class="nav-btn active" href="tracking.html" aria-current="page"><span class="ico">⌖</span>Live tracking<span class="nav-badge">LIVE</span></a>
+<a class="nav-btn" href="stops.html" ><span class="ico">▣</span>Halte & koridor</a>
+<a class="nav-btn" href="notifications.html" ><span class="ico">♧</span>Notifikasi<span class="nav-badge">3</span></a></nav></div>
+      <div><div class="nav-label">PENGELOLAAN</div><nav class="nav"><a class="nav-btn" href="operator.html" ><span class="ico">▤</span>Dashboard operator</a></nav></div>
+      <div class="side-spacer"></div>
+      <div class="service-card"><h4>Semua sistem beroperasi</h4><p>Data lokasi bus demo diperbarui secara berkala untuk simulasi dashboard.</p><div class="online"><span class="dot"></span>Sistem online</div></div>
+      <div class="profile"><div class="avatar">BW</div><div><div class="profile-name">Pengguna BusWatch</div><div class="profile-role">Akun demo · Penumpang</div></div></div>
+    </aside>
+<main>
+<header class="topbar"><div style="display:flex;gap:10px;align-items:flex-start"><button aria-label="Buka menu" class="icon-btn mobile-menu" id="mobileMenu">☰</button><div><div class="crumb">BusWatch / <span id="crumbCurrent">Live Tracking</span></div><h1 class="page-title">Pantau posisi bus</h1><div class="page-subtitle">Lihat posisi armada, halte, dan estimasi waktu tiba.</div></div></div><div class="top-actions"><span class="date-pill" id="currentDate">Memuat tanggal…</span><button aria-label="Buka notifikasi" class="icon-btn" id="topNotify">♧<span class="badge-dot"></span></button><div class="avatar">BW</div></div></header>
+<section class="view active" id="view-tracking">
+<div class="card"><div class="card-head"><div><div class="card-title">Live tracking armada</div><div class="card-sub">Peta simulasi posisi bus dan urutan halte di sepanjang rute</div></div><span class="status green"><span class="dot" style="width:6px;height:6px;margin-right:4px"></span> LIVE DEMO</span></div><div class="map-wrap"><div class="map" id="trackingMap" style="height:430px"></div><div class="map-key"><span class="key-item"><span class="line-key"></span>Koridor 1</span><span class="key-item"><span class="line-key teal"></span>Koridor 3</span><span class="key-item"><span class="pin-key"></span>Halte</span><span class="key-item">🚌 Posisi bus simulasi</span></div></div></div>
+<div class="grid kpis" style="margin-top:17px"><div class="card kpi"><div class="kpi-label">Bus 01 · Koridor 1</div><div class="kpi-value">4 <span style="font-size:13px">mnt</span></div><div class="kpi-foot">ETA Halte A · 1,2 km</div></div><div class="card kpi"><div class="kpi-label">Bus 03 · Koridor 3</div><div class="kpi-value">9 <span style="font-size:13px">mnt</span></div><div class="kpi-foot"><span style="color:#c57b1a">Terlambat 2 menit</span></div></div><div class="card kpi"><div class="kpi-label">Bus 07 · Koridor 1</div><div class="kpi-value">13 <span style="font-size:13px">mnt</span></div><div class="kpi-foot">ETA Halte A · 4,5 km</div></div><div class="card kpi"><div class="kpi-label">Pembaruan data</div><div class="kpi-value" id="lastUpdated" style="font-size:22px">08:22:15</div><div class="kpi-foot">Contoh data simulasi</div></div></div>
+</section>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>

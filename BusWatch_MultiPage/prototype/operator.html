@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BusWatch — aplikasi perencanaan perjalanan, pemantauan bus, dan prediksi waktu kedatangan angkutan umum.">
+<title>BusWatch — Dashboard Operator</title><link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="operator">
+<div class="app">
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" style="text-decoration:none;color:inherit"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="4" y="3" width="16" height="15" rx="3"></rect><path d="M7 7h10M7 11h3m4 0h3M7 15h10M7 18l-2 3m12-3 2 3"></path></svg></div><div><div class="brand-name">BusWatch</div><div class="brand-caption">SMART PUBLIC TRANSPORT</div></div></a>
+      <div><div class="nav-label">MENU UTAMA</div><nav aria-label="Navigasi utama" class="nav"><a class="nav-btn" href="index.html" ><span class="ico">▦</span>Ringkasan</a>
+<a class="nav-btn" href="planner.html" ><span class="ico">⌕</span>Rencanakan perjalanan</a>
+<a class="nav-btn" href="tracking.html" ><span class="ico">⌖</span>Live tracking<span class="nav-badge">LIVE</span></a>
+<a class="nav-btn" href="stops.html" ><span class="ico">▣</span>Halte & koridor</a>
+<a class="nav-btn" href="notifications.html" ><span class="ico">♧</span>Notifikasi<span class="nav-badge">3</span></a></nav></div>
+      <div><div class="nav-label">PENGELOLAAN</div><nav class="nav"><a class="nav-btn active" href="operator.html" aria-current="page"><span class="ico">▤</span>Dashboard operator</a></nav></div>
+      <div class="side-spacer"></div>
+      <div class="service-card"><h4>Semua sistem beroperasi</h4><p>Data lokasi bus demo diperbarui secara berkala untuk simulasi dashboard.</p><div class="online"><span class="dot"></span>Sistem online</div></div>
+      <div class="profile"><div class="avatar">BW</div><div><div class="profile-name">Pengguna BusWatch</div><div class="profile-role">Akun demo · Penumpang</div></div></div>
+    </aside>
+<main>
+<header class="topbar"><div style="display:flex;gap:10px;align-items:flex-start"><button aria-label="Buka menu" class="icon-btn mobile-menu" id="mobileMenu">☰</button><div><div class="crumb">BusWatch / <span id="crumbCurrent">Dashboard Operator</span></div><h1 class="page-title">Monitoring operasional</h1><div class="page-subtitle">Pantau armada dan evaluasi ringkas kinerja layanan.</div></div></div><div class="top-actions"><span class="date-pill" id="currentDate">Memuat tanggal…</span><button aria-label="Buka notifikasi" class="icon-btn" id="topNotify">♧<span class="badge-dot"></span></button><div class="avatar">BW</div></div></header>
+<section class="view active" id="view-operator"><div class="operator-banner"><div><h2>Dashboard Operator</h2><p>Pemantauan armada, ketepatan waktu, dan status layanan koridor.</p></div><span class="banner-chip">● MODE OPERATOR · DEMO</span></div><div class="grid operator-kpis"><div class="card kpi"><div class="kpi-top"><span class="kpi-label">Total armada</span><span class="kpi-icon bg-blue">🚌</span></div><div class="kpi-value">24</div><div class="kpi-foot">20 beroperasi · 2 cadangan · 2 gangguan</div></div><div class="card kpi"><div class="kpi-top"><span class="kpi-label">Ketepatan waktu</span><span class="kpi-icon bg-green">✓</span></div><div class="kpi-value">92%</div><div class="kpi-foot">Target layanan: 90%</div></div><div class="card kpi"><div class="kpi-top"><span class="kpi-label">Rata-rata ETA error</span><span class="kpi-icon bg-purple">⌁</span></div><div class="kpi-value">1,8 <span style="font-size:13px">mnt</span></div><div class="kpi-foot">Nilai contoh untuk simulasi</div></div></div><div class="grid page-grid"><div class="card"><div class="card-head"><div><div class="card-title">Posisi armada</div><div class="card-sub">Peta pemantauan kendaraan</div></div><button class="link-btn" data-goto="tracking">Buka tracking →</button></div><div class="map-wrap"><div class="map operator-map" id="operatorMap"></div></div></div><div class="card"><div class="card-head"><div><div class="card-title">Daftar armada</div><div class="card-sub">Status dan koridor bus</div></div></div><div class="table-wrap"><table><thead><tr><th>BUS</th><th>KORIDOR</th><th>STATUS</th></tr></thead><tbody><tr><td class="td-strong">01</td><td>Koridor 1</td><td><span class="status green">Beroperasi</span></td></tr><tr><td class="td-strong">03</td><td>Koridor 3</td><td><span class="status orange">Terlambat</span></td></tr><tr><td class="td-strong">07</td><td>Koridor 1</td><td><span class="status green">Beroperasi</span></td></tr><tr><td class="td-strong">12</td><td>Koridor 5</td><td><span class="status red">Gangguan</span></td></tr><tr><td class="td-strong">14</td><td>Koridor 3</td><td><span class="status green">Beroperasi</span></td></tr></tbody></table></div></div></div></section>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>

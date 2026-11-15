@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BusWatch — aplikasi perencanaan perjalanan, pemantauan bus, dan prediksi waktu kedatangan angkutan umum.">
+<title>BusWatch — Notifikasi</title><link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="notifications">
+<div class="app">
+<aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" style="text-decoration:none;color:inherit"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="4" y="3" width="16" height="15" rx="3"></rect><path d="M7 7h10M7 11h3m4 0h3M7 15h10M7 18l-2 3m12-3 2 3"></path></svg></div><div><div class="brand-name">BusWatch</div><div class="brand-caption">SMART PUBLIC TRANSPORT</div></div></a>
+      <div><div class="nav-label">MENU UTAMA</div><nav aria-label="Navigasi utama" class="nav"><a class="nav-btn" href="index.html" ><span class="ico">▦</span>Ringkasan</a>
+<a class="nav-btn" href="planner.html" ><span class="ico">⌕</span>Rencanakan perjalanan</a>
+<a class="nav-btn" href="tracking.html" ><span class="ico">⌖</span>Live tracking<span class="nav-badge">LIVE</span></a>
+<a class="nav-btn" href="stops.html" ><span class="ico">▣</span>Halte & koridor</a>
+<a class="nav-btn active" href="notifications.html" aria-current="page"><span class="ico">♧</span>Notifikasi<span class="nav-badge">3</span></a></nav></div>
+      <div><div class="nav-label">PENGELOLAAN</div><nav class="nav"><a class="nav-btn" href="operator.html" ><span class="ico">▤</span>Dashboard operator</a></nav></div>
+      <div class="side-spacer"></div>
+      <div class="service-card"><h4>Semua sistem beroperasi</h4><p>Data lokasi bus demo diperbarui secara berkala untuk simulasi dashboard.</p><div class="online"><span class="dot"></span>Sistem online</div></div>
+      <div class="profile"><div class="avatar">BW</div><div><div class="profile-name">Pengguna BusWatch</div><div class="profile-role">Akun demo · Penumpang</div></div></div>
+    </aside>
+<main>
+<header class="topbar"><div style="display:flex;gap:10px;align-items:flex-start"><button aria-label="Buka menu" class="icon-btn mobile-menu" id="mobileMenu">☰</button><div><div class="crumb">BusWatch / <span id="crumbCurrent">Notifikasi</span></div><h1 class="page-title">Pusat notifikasi</h1><div class="page-subtitle">Pembaruan kedatangan bus dan status layanan.</div></div></div><div class="top-actions"><span class="date-pill" id="currentDate">Memuat tanggal…</span><button aria-label="Buka notifikasi" class="icon-btn" id="topNotify">♧<span class="badge-dot"></span></button><div class="avatar">BW</div></div></header>
+<section class="view active" id="view-notifications"><div class="card section-card"><h3>Pusat notifikasi</h3><p class="lead">Pembaruan perjalanan dan status layanan BusWatch. Data di bawah adalah contoh untuk demo.</p><div class="tabs" id="noticeTabs"><button class="tab active" data-filter="all">Semua</button><button class="tab" data-filter="bus">Kedatangan bus</button><button class="tab" data-filter="service">Status layanan</button></div><div id="allNotices"><div class="notice" data-type="bus"><div class="notice-ico">🚌</div><div style="flex:1"><div class="notice-text">Bus 01 diperkirakan tiba di Halte A dalam 4 menit</div><div class="notice-detail">Koridor 1 menuju Terminal Ubung. Waktu tiba dapat berubah mengikuti kondisi perjalanan.</div></div><div class="notice-time">08.22</div></div><div class="notice" data-type="service"><div class="notice-ico" style="background:#fff0ef">⚠️</div><div style="flex:1"><div class="notice-text">Bus 03 terlambat sekitar 2 menit</div><div class="notice-detail">ETA diperbarui berdasarkan posisi kendaraan pada rute.</div></div><div class="notice-time">08.19</div></div><div class="notice" data-type="service"><div class="notice-ico" style="background:#e7f7ef">✓</div><div style="flex:1"><div class="notice-text">Koridor 1 beroperasi normal</div><div class="notice-detail">Tidak ada gangguan layanan yang dilaporkan pada data demo.</div></div><div class="notice-time">08.10</div></div><div class="notice" data-type="bus"><div class="notice-ico">🔔</div><div style="flex:1"><div class="notice-text">Pengingat: bersiap menuju halte</div><div class="notice-detail">Estimasi berjalan kaki ke Halte A sekitar 5 menit.</div></div><div class="notice-time">08.08</div></div></div></div></section>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
